@@ -38,6 +38,8 @@ interface CanvasContextType {
   setGridUnit: (unit: 'ft' | 'm') => void;
   addFloor: () => void;
   removeFloor: (id: string) => void;
+  duplicateFloor: (id: string) => void;
+  renameFloor: (id: string, name: string) => void;
   setActiveFloor: (id: string) => void;
   setTool: (tool: CanvasState['tool']) => void;
   addWall: (wall: Wall) => void;
@@ -108,6 +110,36 @@ export const CanvasProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const duplicateFloor = (id: string) => {
+    const floorToDuplicate = state.floors.find((f) => f.id === id);
+    if (!floorToDuplicate) return;
+
+    const newFloor: Floor = {
+      id: `floor-${Date.now()}`,
+      name: `${floorToDuplicate.name} (Copy)`,
+      level: state.floors.length,
+      walls: floorToDuplicate.walls.map((wall) => ({
+        ...wall,
+        id: `wall-${Date.now()}-${Math.random()}`,
+      })),
+    };
+
+    setState((prev) => ({
+      ...prev,
+      floors: [...prev.floors, newFloor],
+      activeFloorId: newFloor.id,
+    }));
+  };
+
+  const renameFloor = (id: string, name: string) => {
+    setState((prev) => ({
+      ...prev,
+      floors: prev.floors.map((floor) =>
+        floor.id === id ? { ...floor, name } : floor
+      ),
+    }));
+  };
+
   const setActiveFloor = (id: string) => {
     setState((prev) => ({ ...prev, activeFloorId: id }));
   };
@@ -141,6 +173,8 @@ export const CanvasProvider = ({ children }: { children: ReactNode }) => {
         setGridUnit,
         addFloor,
         removeFloor,
+        duplicateFloor,
+        renameFloor,
         setActiveFloor,
         setTool,
         addWall,

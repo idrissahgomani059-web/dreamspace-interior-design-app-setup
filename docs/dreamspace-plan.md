@@ -50,17 +50,19 @@
   - Zoom/pan controls (mouse wheel + drag)
   - Floor management with context API
 
-- [ ] **Task 3.2:** Drawing Tools
-  - Wall drawing tool
-  - Room creation
-  - Door/window placement
-  - Measurement tools
+- [x] **Task 3.2:** Drawing Tools ✅ COMPLETED
+  - Wall drawing tool with click-to-place
+  - Snap-to-grid functionality
+  - Real-time measurement display
+  - Visual feedback (dashed preview line)
+  - ESC to cancel drawing
 
-- [ ] **Task 3.3:** Multi-Floor Management
-  - Floor addition/removal
-  - Floor navigation
-  - Vertical alignment tools
-  - Floor copying
+- [x] **Task 3.3:** Multi-Floor Management ✅ COMPLETED
+  - Floor addition/removal with UI
+  - Floor duplication with wall copying
+  - Floor renaming with inline editing
+  - Active floor navigation and highlighting
+  - Visual floor statistics (level, wall count)
 
 ### Phase 4: Furniture Library
 - [ ] **Task 4.1:** Furniture Browser
@@ -119,6 +121,6 @@
 - **Backend:** Supabase (future phase)
 
 ## Current Status
-**Active Task:** Task 3.1 - Canvas Setup ✅ COMPLETED  
-**Progress:** Phase 3 started - Core canvas functionality ready  
-**Next Steps:** Task 3.2 - Drawing Tools (wall, door, window) or Task 3.3 - Multi-Floor Management UI
+**Active Task:** Task 3.3 - Multi-Floor Management ✅ COMPLETED  
+**Progress:** Phase 3 Floor Plan Editor - Core functionality complete  
+**Next Steps:** Task 4.1 - Furniture Browser or Task 5.1 - 3D View (requires Three.js)

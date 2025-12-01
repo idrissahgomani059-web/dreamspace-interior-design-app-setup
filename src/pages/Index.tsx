@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { SplashScreen } from '@/components/SplashScreen';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,6 +8,7 @@ import { Building2, Sofa, Sparkles } from 'lucide-react';
 
 const Index = () => {
   const [showSplash, setShowSplash] = useState(true);
+  const navigate = useNavigate();
 
   if (showSplash) {
     return <SplashScreen onComplete={() => setShowSplash(false)} />;
@@ -63,7 +65,7 @@ const Index = () => {
             and bring your interior design vision to life with professional-grade tools.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <Button size="lg" className="bg-gradient-gold text-foreground hover:opacity-90 shadow-gold">
+            <Button size="lg" className="bg-gradient-gold text-foreground hover:opacity-90 shadow-gold" onClick={() => navigate('/editor')}>
               Start Designing
             </Button>
             <Button size="lg" variant="outline" className="border-2 border-[hsl(var(--gold))] text-foreground hover:bg-[hsl(var(--gold))]/10">
@@ -106,7 +108,7 @@ const Index = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Button className="w-full bg-gradient-silver text-foreground hover:opacity-90">
+                <Button className="w-full bg-gradient-silver text-foreground hover:opacity-90" onClick={() => navigate('/editor')}>
                   Use This Template
                 </Button>
               </CardContent>
